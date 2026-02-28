@@ -230,9 +230,59 @@
 
 // The third argument is the array where map is being called on.
 
-const numbers = [3, 4, 5, 6, 7].map((element, index, array) => {
-  console.log("Element:", element);
-  console.log("Index:", index);
-  console.log("Array:", array);
-  return element * 2;
-});
+// const numbers = [3, 4, 5, 6, 7].map((element, index, array) => {
+//   console.log("Element:", element);
+//   console.log("Index:", index);
+//   console.log("Array:", array);
+//   return element * 2;
+// });
+
+
+
+// function getIndexToIns (arry, num){
+//   const sortary = arry.sort((a,b) => a - b);
+//   const indexs = sortary.findIndex(x => x >= num);
+//   return indexs 
+  
+// }
+
+// console.log(getIndexToIns([60, 10, 20, 30, 40, 50],40))
+// console.log(getIndexToIns([1,10,2],10))
+
+// 🧠 Practice Question 1 — Sorted Insert Position
+
+// Task:
+// Create a function that:
+// Takes an array and a number.
+// Sorts the array in ascending order.
+// Returns the lowest index where the number should be inserted.
+
+// function getIndex(arry, num){
+//   let sort = arry.sort((a,b) => a-b)
+//   let index = sort.findIndex(x => x >= num);
+//   return index
+// }
+
+
+// console.log(getIndex([5, 3, 20, 10], 7))
+// ❯ node script6.js 
+// 2
+
+// 🧠 Practice Question 2 — First Greater Number Index
+
+// Task:
+// Create a function that:
+// Takes an array and a number.
+// Returns the index of the first element strictly greater than the given number.
+// If none found → return -1.
+
+function firstGreater(arry, num){
+    let sort = arry.sort((a,b) => a-b)
+  let index = sort.findIndex(x => x > num);
+  return index 
+}
+
+console.log(firstGreater([2, 4, 6, 8], 5));
+// ░▒▓   …/my-all-coding-main   main !   v22.22.0   12:49  
+// ❯ node script6.js 
+// 2

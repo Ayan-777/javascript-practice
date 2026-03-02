@@ -1,0 +1,92 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Center layout */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Card container */
+div {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 40px 50px;
+  border-radius: 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  min-width: 280px;
+}
+
+/* Mode button */
+#mode {
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #ffd369;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+#mode:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255,211,105,0.7);
+}
+
+/* Counter */
+#count {
+  margin: 22px 0;
+  font-size: 64px;
+  font-weight: 700;
+  color: #00ffd5;
+}
+
+/* Plus & minus buttons */
+#plus, #minus {
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: #fff;
+}
+
+#plus {
+  background: #4caf50;
+}
+
+#minus {
+  background: #f44336;
+}
+
+#plus:hover, #minus:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+}
+
+#plus:active, #minus:active {
+  transform: scale(0.95);
+}
+
+/* Message */
+#message {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #f1f1f1;
+  opacity: 0.85;
+}

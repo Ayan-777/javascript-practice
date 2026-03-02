@@ -1,0 +1,57 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Center layout */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f4f7;
+}
+
+/* Container */
+div {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  min-width: 260px;
+}
+
+/* Counter */
+#count {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Button */
+#button {
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Hover */
+#button:hover {
+  background: #43a047;
+}
+
+/* Active / Holding */
+#button:active {
+  transform: scale(0.95);
+  background: #388e3c;
+}

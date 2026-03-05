@@ -276,13 +276,23 @@
 // Returns the index of the first element strictly greater than the given number.
 // If none found → return -1.
 
-function firstGreater(arry, num){
-    let sort = arry.sort((a,b) => a-b)
-  let index = sort.findIndex(x => x > num);
-  return index 
-}
+// function firstGreater(arry, num){
+//     let sort = arry.sort((a,b) => a-b)
+//   let index = sort.findIndex(x => x > num);
+//   return index 
+// }
 
-console.log(firstGreater([2, 4, 6, 8], 5));
+// console.log(firstGreater([2, 4, 6, 8], 5));
 // ░▒▓   …/my-all-coding-main   main !   v22.22.0   12:49  
 // ❯ node script6.js 
 // 2
+
+function diffArray(arry1, arry2){
+  let a1 = arry1.filter(item => !arry2.includes(item));
+
+  let a2 = arry2.filter(item => !arry1.includes(item));
+
+  return[...a1, ...a2]
+}
+
+console.log(diffArray(["pen", "book"], ["book", "pencil", "notebook"]))

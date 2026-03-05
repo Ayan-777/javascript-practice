@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  color: white;
+}
+
+h1 {
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+div {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  color: #333;
+}
+
+#message {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+  min-height: 30px;
+}
+
+/* Main Click Button */
+#btn {
+  padding: 14px 35px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #4e73df;
+  color: white;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+#btn:hover {
+  background: #2e59d9;
+  transform: scale(1.08);
+}
+
+#btn:active {
+  transform: scale(0.95);
+}
+
+#btn:disabled {
+  background: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Reset Button */
+#res {
+  padding: 14px 35px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #e74a3b;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#res:hover {
+  background: #c0392b;
+  transform: scale(1.08);
+}
+
+#res:active {
+  transform: scale(0.95);
+}

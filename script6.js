@@ -287,12 +287,22 @@
 // ❯ node script6.js 
 // 2
 
-function diffArray(arry1, arry2){
-  let a1 = arry1.filter(item => !arry2.includes(item));
+// function diffArray(arry1, arry2){
+//   let a1 = arry1.filter(item => !arry2.includes(item));
 
-  let a2 = arry2.filter(item => !arry1.includes(item));
+//   let a2 = arry2.filter(item => !arry1.includes(item));
 
-  return[...a1, ...a2]
+//   return[...a1, ...a2]
+// }
+
+// console.log(diffArray(["pen", "book"], ["book", "pencil", "notebook"]))
+
+
+
+
+
+function destroyer(arr, ...num ){
+  return arr.filter((x) => !num.includes(x))
 }
 
-console.log(diffArray(["pen", "book"], ["book", "pencil", "notebook"]))
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))

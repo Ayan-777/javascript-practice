@@ -301,8 +301,8 @@
 
 
 
-function destroyer(arr, ...num ){
-  return arr.filter((x) => !num.includes(x))
-}
+// function destroyer(arr, ...num ){
+//   return arr.filter((x) => !num.includes(x))
+// }
 
-console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))
+// console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))

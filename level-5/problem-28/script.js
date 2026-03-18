@@ -5,17 +5,28 @@ let list = document.getElementById('list');
 submit.addEventListener('click', () => {
     let text = input.value;
 
-    let li = document.createElement('li');
-    li.innerHTML = text
+    if(text === "") return; // prevent empty
 
-    let delbtn = document.createElement('button');
-    delbtn.innerHTML = 'delete'
+    let task = document.createElement('div');
+    task.classList.add('task');
 
-    delbtn.addEventListener('click', () => {
-        li.remove()
-    })
+    let span = document.createElement('span');
+    span.innerHTML = text;
 
-    list.appendChild(li)
-    li.appendChild(delbtn)
-})
+    let delebtn = document.createElement('button');
+    delebtn.innerHTML = 'Delete';
 
+    delebtn.addEventListener('click', () => {
+        task.remove();
+    });
+
+    span.addEventListener('click', () => {
+        span.classList.toggle('line-through')
+    });
+
+    list.appendChild(task);
+    task.appendChild(span);
+    task.appendChild(delebtn);
+
+    input.value = '';
+});

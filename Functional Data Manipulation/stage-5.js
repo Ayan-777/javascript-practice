@@ -263,3 +263,76 @@
 // ░▒▓   …/my-all-coding-main/Functional Data Manipulation   main ?   v22.22.0   13:07  
 // ❯ node stage-5.js 
 // 170000
+
+
+
+
+// 🧠 Q1 — totalPositiveNumbers
+// Goal:
+// Return the sum of only positive numbers.
+
+
+// function totalPositiveNumbers(number){
+//     return number
+//     .filter((x) => x > 0)
+//     .reduce((acc, x) => acc+ x ,0)
+// }
+
+// console.log(totalPositiveNumbers([1, -2, 3, 4, -5]))
+
+// ░▒▓   …/my-all-coding-main/Functional Data Manipulation   main !   v22.22.0   23:16  
+// ❯ node stage-5.js 
+// 8
+
+
+// 🧠 Q2 — groupUsersByActiveStatus
+// Goal:
+// Group users into active and inactive.
+
+
+
+// function groupUsersByActiveStatus(users){
+//     return users.reduce((acc, curr) => {
+//         let key  = curr.active ? 'active' : 'inactive';
+
+//         if(!acc[key]){
+//             acc[key] = []
+//         }
+
+//         acc[key].push(curr.name)
+//         return acc
+//     },{})
+// }
+
+// console.log(groupUsersByActiveStatus([
+//  {name:"Ayan", active:true},
+//  {name:"Sara", active:false},
+//  {name:"Rahul", active:true}
+// ]))
+
+
+// 🧠 Q3 — totalPriceByCategory
+
+// Goal:
+// Return total price grouped by category.
+
+// function totalPriceByCategory(arry){
+//     return arry.reduce((acc, curr) => {
+//         if(!acc[curr.category]){
+//             acc[curr.category] = 0
+            
+//         }
+
+//         acc[curr.category] += curr.price
+//         return acc
+//     },{})
+// }
+
+// console.log(totalPriceByCategory([
+//  {name:"Pen", category:"Stationery", price:10},
+//  {name:"Book", category:"Stationery", price:50},
+//  {name:"Shirt", category:"Clothing", price:100}
+// ]))
+// ░▒▓   …/my-all-coding-main/Functional Data Manipulation   main !   v22.22.0   00:11  
+// ❯ node stage-5.js 
+// { Stationery: 60, Clothing: 100 }

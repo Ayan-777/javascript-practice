@@ -1080,3 +1080,28 @@
 // 1
 // 3
 // 0
+
+
+
+
+
+
+
+
+
+function whatIsInAName(list, iden){
+    return list.filter(x => {
+        return Object.keys(iden).every(key => {
+            return x[key] === iden[key];
+        })
+    })
+}
+
+console.log(whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" }
+  ],
+  { last: "Capulet" }
+))

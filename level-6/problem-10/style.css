@@ -1,0 +1,131 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+}
+
+/* title */
+h1{
+  position:absolute;
+  top:40px;
+  color:white;
+  font-size:28px;
+}
+
+/* container */
+.conteiner{
+  background:#ffffff;
+  padding:30px;
+  border-radius:12px;
+  width:360px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+  text-align:center;
+  position:relative;
+}
+
+/* input wrapper (important for button positioning) */
+.conteiner input{
+  width:100%;
+  padding:12px;
+  padding-right:40px; /* space for button */
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+  font-size:14px;
+  margin-bottom:15px;
+  transition:0.2s;
+}
+
+.conteiner input:focus{
+  border-color:#2a5298;
+  box-shadow:0 0 6px rgba(42,82,152,0.4);
+}
+
+/* show/hide button */
+#showbtn{
+  position:absolute;
+  right:40px;
+  top:92px;
+  transform:translateY(-50%);
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:18px;
+  color:#555;
+}
+
+#showbtn:hover{
+  color:#2a5298;
+}
+
+/* strength message */
+#strengthmessage{
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:15px;
+}
+
+/* rules */
+h4{
+  margin-bottom:10px;
+  color:#333;
+}
+
+ul{
+  text-align:left;
+  padding-left:20px;
+}
+
+ul li{
+  margin-bottom:6px;
+  font-size:14px;
+  color:#555;
+}
+
+/* hover effect */
+.conteiner:hover{
+  transform:translateY(-3px);
+  transition:0.3s;
+}
+/* input wrapper */
+.input-box{
+  position:relative;
+  width:100%;
+}
+
+/* input */
+.input-box input{
+  width:100%;
+  padding:12px;
+  padding-right:45px; /* space for eye button */
+  border:1px solid #999;
+  border-radius:6px;
+  outline:none;
+  font-size:14px;
+}
+
+/* eye button */
+#showbtn{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:18px;
+  color:#555;
+}
+
+#showbtn:hover{
+  color:#000;
+}

@@ -264,7 +264,7 @@ const { Types } = require("mongoose");
 
 // Rules:
 // Count how many uppercase letter blocks exist
-// Continuous uFppercase letters = 1 block
+// Continuous uppercase letters = 1 block
 // Uppercase = A–Z
 
 // function countUppercaseBlocks(str){

@@ -10,8 +10,6 @@
 // If the same argument is passed again, return the cached result instead of running fn again
 // If it's a new argument, run fn and cache the result
 
-
-
 // function memoize(fn){
 //     let cache = {};
 //     return function(arg){
@@ -25,7 +23,6 @@
 //     }
 // }
 
-
 // function slowSquare(n) {
 //   console.log('calculating...');
 //   return n * n;
@@ -37,14 +34,13 @@
 // console.log(memoDouble(4));
 // console.log(memoDouble(5));
 // console.log(memoDouble(4));
-// ❯ node stage4.js 
+// ❯ node stage4.js
 // calculating...
 // 16
 // 16
 // calculating...
 // 25
 // 16
-
 
 // Same memoize function you wrote. New scenario:
 // javascriptfunction slowDouble(n) {
@@ -54,8 +50,6 @@
 // let memoDouble = memoize(slowDouble);
 // You write the test cases. Call memoDouble with different arguments, including repeats.
 // Predict what will print before you run it. Then run it and check if you were right.
-
-
 
 // function memoize(fn){
 //     let cache = {};
@@ -71,7 +65,6 @@
 //     }
 // }
 
-
 // function slowDouble(n) {
 //   console.log('doubling...');
 //   return n * 2;
@@ -84,8 +77,8 @@
 // console.log(memoDouble(5));
 // console.log(memoDouble(4));
 // console.log(memoDouble(5));
-//   …/my-all-coding-main/level-7/closure    main !?   v22.22.0   11:44  
-// ❯ node stage4.js 
+//   …/my-all-coding-main/level-7/closure    main !?   v22.22.0   11:44 
+// ❯ node stage4.js
 // doubling...
 // 8
 // 8
@@ -93,8 +86,6 @@
 // 10
 // 8
 // 10
-
-
 
 // #11: curry(fn)
 // This one is harder.
@@ -139,8 +130,24 @@
 // 6
 // 9
 // 6
-// ░▒▓   …/my-all-coding-main/level-7/closure    main !?   v22.22.0   14:42  
-// ❯ node stage4.js 
+// ░▒▓   …/my-all-coding-main/level-7/closure    main !?   v22.22.0   14:42 
+// ❯ node stage4.js
 // 6
 // 9
 // 6
+
+function compose(f, g) {
+
+    return function(x){
+        return f(g(x))
+    }
+}
+
+const double = (x) => x * 2;
+const addTen = (x) => x + 10;
+
+const doubleThenAdd = compose(addTen, double);
+// console.log(doubleThenAdd(5)); // double(5) = 10, addTen(10) = 20
+// ░▒▓   …/my-all-coding-main/level-7/closure    main !   v22.22.0   20:26  
+// ❯ node stage4.js 
+// 20

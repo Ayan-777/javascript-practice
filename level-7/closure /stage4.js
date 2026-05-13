@@ -136,17 +136,17 @@
 // 9
 // 6
 
-function compose(f, g) {
+// function compose(f, g) {
 
-    return function(x){
-        return f(g(x))
-    }
-}
+//     return function(x){
+//         return f(g(x))
+//     }
+// }
 
-const double = (x) => x * 2;
-const addTen = (x) => x + 10;
+// const double = (x) => x * 2;
+// const addTen = (x) => x + 10;
 
-const doubleThenAdd = compose(addTen, double);
+// const doubleThenAdd = compose(addTen, double);
 // console.log(doubleThenAdd(5)); // double(5) = 10, addTen(10) = 20
 // ░▒▓   …/my-all-coding-main/level-7/closure    main !   v22.22.0   20:26  
 // ❯ node stage4.js 

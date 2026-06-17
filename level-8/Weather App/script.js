@@ -5,6 +5,8 @@ let temp = document.getElementById("temp");
 let description = document.getElementById("description");
 let humidity = document.getElementById("humidity");
 let error = document.getElementById('error')
+let Latitude = document.getElementById('lat');
+const APIKEY = 'your_key_here';
 
 async function getWeather() {
     if(input.value.trim() === ''){
@@ -16,7 +18,7 @@ async function getWeather() {
         return;
     }
   try {
-    let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=b9b03a8d64a1dd15a7a182cdac58d829&units=metric`,);
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${APIKEY}&units=metric`,);
     let data = await res.json();
 
     if(data.cod === '404'){
@@ -30,6 +32,7 @@ async function getWeather() {
 
     city.textContent = `City Name : ${data.name}`;
     temp.textContent = `temperature : ${data.main.temp + "°C"}`;
+    Latitude.textContent = `Latitude : ${data.coord.lat}`
     description.textContent = `description : ${data.weather[0].description}`;
     humidity.textContent = `Humidity : ${data.main.humidity + "%"}`;
   } catch (error) {

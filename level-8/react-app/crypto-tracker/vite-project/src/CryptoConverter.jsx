@@ -18,14 +18,20 @@ function CryptoConverter() {
         setRates(data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        setError(error.message)
+        setIsLoading(false)
       }
     }
     startFetcing();
   }, []);
 
+
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if(error){
+    return <div>⚠️ Error: {error}</div>
   }
   return (
     <div>

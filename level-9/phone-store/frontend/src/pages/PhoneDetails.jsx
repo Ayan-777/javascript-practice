@@ -1,36 +1,47 @@
-import { useParams,} from "react-router-dom"; 
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
 
-function PhoneDetails(){
-    const{id} = useParams();
-    const [phone, setPhone] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    
-    useEffect(() => {
-      const fetchPhoneDetails = async () => {
-        try {
-          const res = await fetch(`http://localhost:5000/api/phones/${id}`);
-          if(!res.ok){
-            throw new Error('Phone not Found')
-          }
-          const data = await res.json();
-          setPhone(data)
-        } catch (err) {
-          console.error("Error fetching phone details:", err);
-          setError("Failed to load phone details.")
-        }finally{
-          setLoading(false)
+function PhoneDetails() {
+  const { addToCart } = useCart();
+  const { id } = useParams();
+  const [phone, setPhone] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPhoneDetails = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/phones/${id}`);
+        if (!res.ok) {
+          throw new Error("Phone not Found");
         }
+        const data = await res.json();
+        setPhone(data);
+      } catch (err) {
+        console.error("Error fetching phone details:", err);
+        setError("Failed to load phone details.");
+      } finally {
+        setLoading(false);
       }
-      fetchPhoneDetails();
-    },[id])
+    };
+    fetchPhoneDetails();
+  }, [id]);
 
-    if(loading){
-      return <h2 style={{ textAlign: "center", marginTop: "50px" }}>Loading details...</h2>;
-    }
-    if (error || !phone) return <h2 style={{ textAlign: "center", marginTop: "50px" }}>{error || "Phone not found"}</h2>;
-return (
+  if (loading) {
+    return (
+      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+        Loading details...
+      </h2>
+    );
+  }
+  if (error || !phone)
+    return (
+      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+        {error || "Phone not found"}
+      </h2>
+    );
+  return (
     <div className="details-container">
       {/* Back Button Navigation */}
 
@@ -67,7 +78,9 @@ return (
             <p>{phone.Offers}</p>
           </div>
 
-          <button className="buy-now-btn">Add to Bag</button>
+          <button className="buy-now-btn" onClick={() => addToCart(phone)}>
+            Add to Bag
+          </button>
         </div>
       </div>
     </div>

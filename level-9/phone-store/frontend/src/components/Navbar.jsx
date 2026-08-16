@@ -16,11 +16,75 @@ function Navbar() {
             <span className="nav-dropdown-trigger">Supprt ▾</span>
             <div className="support-dropdown-menu">
               <div className="support-card-content">
-                <Link to="/" className="support-pill-btn">iPhone</Link>
-                <Link to="/" className="support-pill-btn">Samsung</Link>
-                <Link to="/" className="support-pill-btn">Vivo</Link>
-                <Link to="/" className="support-pill-btn">Google Pixel</Link>
-                <Link to="/" className="support-pill-btn">Oppo</Link>
+                <a
+                  href="https://support.apple.com/iphone"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  iphone
+                </a>
+
+                <a
+                  href="https://www.samsung.com/us/support/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Samsung
+                </a>
+
+                <a
+                  href="https://www.vivo.com/en/support"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Vivo
+                </a>
+
+                <a
+                  href="https://support.oppo.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Oppo
+                </a>
+
+                <a
+                  href="https://www.mi.com/in/support/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Xiaomi
+                </a>
+
+                <a
+                  href="https://service.oneplus.com/in#/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  OnePlus
+                </a>
+                <a
+                  href="https://in.nothing.tech/pages/contact-support"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Nothing
+                </a>
+                <a
+                  href="https://www.realme.com/in/support"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="support-pill-btn"
+                >
+                  Realme
+                </a>
               </div>
             </div>
           </div>

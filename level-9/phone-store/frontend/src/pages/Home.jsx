@@ -1,91 +1,70 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+export default function Home() {
   const [phones, setPhones] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const fetchPhonesData = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/phones");
-        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-        const data = await res.json();
-        setPhones(data);
-      } catch (error) {
-        console.log("Error fetching phones:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPhonesData();
+    fetch("http://localhost:5000/api/phones")
+      .then((res) => res.json())
+      .then((data) => setPhones(data))
+      .catch((err) => console.error("Failed to fetch phones:", err));
   }, []);
 
   const filteredPhones = phones.filter((phone) =>
-    phone.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    phone.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (loading) return <h2>Loading Phones...</h2>;
-
   return (
-    <div style={{ padding: "20px" }}>
-      <div className="welcome-header">
-        <h1 className="welcome-title">Welcome to</h1>
-        <h2 className="store-title-handwritten">Phone Store</h2>
-      </div>
+    <div className="store-home-container">
+      {/* Centered Hero & Search Section */}
+      <div className="store-hero">
+        <h1 className="store-title">Flagship Smartphone Store</h1>
+        <p className="store-subtitle">
+          Directly from authorized distributors with full manufacturer warranty.
+        </p>
 
-      {/* Search Bar */}
-      <div className="neomorphic-search-wrapper">
-        <div className="neomorphic-search-box">
+        {/* Clean, Modern Centered Search Bar */}
+        <div className="search-wrapper">
+          <span className="search-icon">🔍</span>
           <input
             type="text"
-            className="neomorphic-input"
-            placeholder="SEARCH..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by brand or model (e.g. iPhone 15, Pixel, Galaxy)..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="store-search-input"
           />
-          {searchTerm && (
-            <button className="clear-btn" onClick={() => setSearchTerm("")}>
+          {search && (
+            <button className="search-clear-btn" onClick={() => setSearch("")}>
               ✕
             </button>
           )}
         </div>
       </div>
 
-      {/* Phone Grid / No Results */}
-      {filteredPhones.length === 0 ? (
-        <div className="no-results-container">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCg9eAy0kCQOYNSzAWVCgKR-7P0rWzTqMN8HlutNAJcg&s=10"
-            alt="No search results"
-            className="no-results-img"
-          />
-          <p className="no-results">
-            No phones match your search "{searchTerm}".
-          </p>
-        </div>
-      ) : (
-        <div className="phone-grid">
-          {filteredPhones.map((phone) => (
-            <Link
-              to={`/phone/${phone._id}`}
-              key={phone._id}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="phone-card">
-                <img src={phone.image} alt={phone.name} />
-                <h3>{phone.name}</h3>
-                <p style={{ fontWeight: "bold" }}>${phone.price}</p>
-                <p style={{ color: "green" }}>{phone.Offers}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* Phone Product Grid */}
+      <div className="store-phones-grid">
+        {filteredPhones.map((phone) => (
+          <Link
+            to={`/phone/${phone._id}`}
+            key={phone._id}
+            className="store-product-card"
+          >
+            <div className="product-image-box">
+              <img src={phone.image} alt={phone.name} />
+            </div>
+
+            <div className="product-info-box">
+              <h3 className="product-name">{phone.name}</h3>
+              <p className="product-price">${phone.price}</p>
+              {phone.deal && (
+                <div className="product-deal-badge">{phone.deal}</div>
+              )}
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
-
-export default Home;

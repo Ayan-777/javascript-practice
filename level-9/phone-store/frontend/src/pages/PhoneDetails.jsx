@@ -1,90 +1,103 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-function PhoneDetails() {
-  const { addToCart } = useCart();
+export default function PhoneDetails() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [phone, setPhone] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [selectedEdition, setSelectedEdition] = useState("standard");
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
-    const fetchPhoneDetails = async () => {
-      try {
-        const res = await fetch(`http://localhost:5000/api/phones/${id}`);
-        if (!res.ok) {
-          throw new Error("Phone not Found");
-        }
-        const data = await res.json();
-        setPhone(data);
-      } catch (err) {
-        console.error("Error fetching phone details:", err);
-        setError("Failed to load phone details.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPhoneDetails();
+    fetch(`http://localhost:5000/api/phones/${id}`)
+      .then((res) => res.json())
+      .then((data) => setPhone(data))
+      .catch((err) => console.error("Failed to load phone details:", err));
   }, [id]);
 
-  if (loading) {
+  if (!phone) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
-        Loading details...
-      </h2>
+      <div className="details-loading">
+        <p>Loading smartphone details...</p>
+      </div>
     );
   }
-  if (error || !phone)
-    return (
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
-        {error || "Phone not found"}
-      </h2>
-    );
+
+  const handleAddToCart = () => {
+    const itemToAdd = {
+      ...phone,
+      selectedEdition: selectedEdition === "deal" ? "Special Deal Included" : "Standard Edition"
+    };
+    addToCart(itemToAdd);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
+
   return (
-    <div className="details-container">
-      {/* Back Button Navigation */}
-
-      {/* Header Info */}
-      <div className="details-header">
-        <h1>Buy {phone.name}</h1>
-        <p className="details-price">
-          From <strong>${phone.price}</strong>
-        </p>
-        <p className="details-offer">{phone.Offers}</p>
-      </div>
-
-      {/* Main Content Layout: Left Image Showcase, Right Option Cards */}
-      <div className="details-content">
-        {/* Left Side: Product Image Display */}
-        <div className="details-image-card">
+    <div className="details-page-container">
+      {/* 2-Column Grid Matching Wireframe */}
+      <div className="details-main-grid">
+        
+        {/* Left Column: Product Image Box */}
+        <div className="details-image-box">
           <img src={phone.image} alt={phone.name} />
         </div>
 
-        {/* Right Side: Options & Checkout Box */}
-        <div className="details-sidebar">
-          <h3>Model Options</h3>
+        {/* Right Column: Name + Editions + Add to Cart */}
+        <div className="details-info-col">
+          
+          {/* Top Header Pill */}
+          <div className="details-title-pill">
+            <h2>{phone.name.toUpperCase()}</h2>
+          </div>
 
-          <div className="option-box active">
-            <div className="option-info">
-              <h4>{phone.name}</h4>
-              <p>Standard Edition</p>
+          {/* Option 1: Standard Edition Card */}
+          <div
+            className={`edition-card ${selectedEdition === "standard" ? "active" : ""}`}
+            onClick={() => setSelectedEdition("standard")}
+          >
+            <div className="edition-text">
+              <h3>Standard Edition</h3>
+              <div className="edition-price-row">
+                <span className="label">PRICE</span>
+                <span className="value">${phone.price}</span>
+              </div>
             </div>
-            <div className="option-price">${phone.price}</div>
+            <div className="radio-circle">
+              {selectedEdition === "standard" && <div className="radio-dot" />}
+            </div>
           </div>
 
-          <div className="trade-in-card">
-            <h4>Special Deal Included</h4>
-            <p>{phone.Offers}</p>
+          {/* Option 2: Special Deal Edition Card */}
+          <div
+            className={`edition-card ${selectedEdition === "deal" ? "active" : ""}`}
+            onClick={() => setSelectedEdition("deal")}
+          >
+            <div className="edition-text">
+              <h3>Special Deal Included</h3>
+              {phone.deal && <p className="deal-subtext">{phone.deal}</p>}
+              <div className="edition-price-row">
+                <span className="label">PRICE</span>
+                <span className="value">${phone.price}</span>
+              </div>
+            </div>
+            <div className="radio-circle">
+              {selectedEdition === "deal" && <div className="radio-dot" />}
+            </div>
           </div>
 
-          <button className="buy-now-btn" onClick={() => addToCart(phone)}>
-            Add to Bag
+          {/* Bottom CTA Button */}
+          <button className="details-cart-btn" onClick={handleAddToCart}>
+            {added ? "✓ ADDED TO CART" : "ADD TO CART"}
           </button>
+
+          <Link to="/" className="details-back-link">
+            ← Back to Store
+          </Link>
         </div>
+
       </div>
     </div>
   );
 }
-
-export default PhoneDetails;
